@@ -1,0 +1,77 @@
+﻿struct PS_INPUT
+{
+    float4 Position : POSITION;
+	float4 LightColor : TEXCOORD0;
+	float4 WorldPos : TEXCOORD1;
+	float4 Pos : TEXCOORD2;
+	float3 Normal : TEXCOORD3;
+	float4 Tangent : COLOR0;
+	float4 UV0 : TEXCOORD4;
+	float4 EyeVector : TEXCOORD6;
+	float3 Color : TEXCOORD7;
+};
+
+// Pixel shader output structure
+struct PS_OUTPUT
+{
+    float4 Color   : COLOR0;
+};
+
+// Global variables
+//float4 diffuseColor = {0.5, 0.5, 0.5, 1};
+float4 diffuseColor = {0.95, 0.95, 0.95, 1};
+float3 specularColor = {1, 1, 1};
+float shininess = 12;
+float3 reflectivity = {0.5, 0.5, 0.5};
+float normalPower = 1;
+
+//float4 PointLightColors[2];
+//float4 PointLightParams[2];
+//float4 PointLightPositions[2];
+
+//float glareLdrScale = 1;
+
+samplerCUBE reflectMap : register(s0);
+samplerCUBE lightDiffuseMap : register(s1);
+sampler2D _sampler_00 : register(s2);
+sampler2D _sampler_01 : register(s3);
+sampler2D _sampler_02 : register(s4);
+
+float4 ps_main( in PS_INPUT In ) : COLOR0
+{
+	float3 texDiffuse = tex2D(_sampler_00, In.UV0.xy).xyz;
+	texDiffuse = texDiffuse * diffuseColor.xyz;
+
+	float4 texSpecular = tex2D(_sampler_01, In.UV0.xy);
+	float3 specular = texSpecular.xyz * 1.2 * pow(2 - texSpecular.xyz, 2) * specularColor;
+	float specularPower = shininess / (pow(texSpecular.y, 2) - texSpecular.y + 0.26);
+
+	float3 texNormal = tex2D(_sampler_02, In.UV0.xy).xyz;
+	float3 r4 = texSpecular * reflectivity;
+
+	float3 eyeVector = normalize(In.EyeVector.xyz);
+	float3 normal = normalize(In.Normal);
+
+	float4 tangentScaleBias = In.Tangent * 2 - 1;
+	float3 tangent = normalize(tangentScaleBias).xyz;
+	
+	float3 r7 = normal.yzx * tangent.zxy;
+	r7 = tangent.yzx * normal.zxy - r7;
+	r7 = r7 * tangentScaleBias.w;
+
+	normal = normal - 0.5;
+	normal.xy *= normalPower;
+	float3 r9 = normalize(normal);
+
+	//return float4(texDiffuse + specular * specularPower, 1);
+	return float4(texDiffuse, 0);
+	//return tex2D(_sampler_00, In.UV0.xy) * In.LightColor;
+
+	/*
+	float4 result;
+
+	float3 var0 = 
+	result.xyz = var0 * glareLdrScale;
+	return result;    
+	*/
+}

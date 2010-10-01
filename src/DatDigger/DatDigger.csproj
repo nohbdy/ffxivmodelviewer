@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3539EA26-9207-4AA0-B46E-900F2DF6F2B8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DatDigger</RootNamespace>
+    <AssemblyName>DatDigger</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="csogg">
+      <HintPath>..\..\lib\csogg.dll</HintPath>
+    </Reference>
+    <Reference Include="csvorbis">
+      <HintPath>..\..\lib\csvorbis.dll</HintPath>
+    </Reference>
+    <Reference Include="SlimDX, Version=2.0.10.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=x86" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BinaryReaderEx.cs" />
+    <Compile Include="Crypto\BlowfishEngine.cs" />
+    <Compile Include="Crypto\Pack.cs" />
+    <Compile Include="DataType.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="FileLoaders\FileLoaderBase.cs" />
+    <Compile Include="FileLoaders\SheetDataLoader.cs" />
+    <Compile Include="FileLoaders\SheetLoader.cs" />
+    <Compile Include="HalfHelper.cs" />
+    <Compile Include="INavigable.cs" />
+    <Compile Include="Language.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sections\Animation\AnimatedBone.cs" />
+    <Compile Include="Sections\Animation\AnimatedComponent.cs" />
+    <Compile Include="Sections\Animation\CibcSection.cs" />
+    <Compile Include="Sections\Animation\CibmSection.cs" />
+    <Compile Include="Sections\Animation\CibtSection.cs" />
+    <Compile Include="Sections\Animation\Curves\ConstantCurve.cs" />
+    <Compile Include="Sections\Animation\Curves\Curve.cs" />
+    <Compile Include="Sections\Animation\Curves\LinearCurve.cs" />
+    <Compile Include="Sections\Animation\Curves\QuaternionCurve.cs" />
+    <Compile Include="Sections\Animation\McbSection.cs" />
+    <Compile Include="Sections\Animation\MtbSection.cs" />
+    <Compile Include="Sections\Animation\SpuCurveLoader.cs" />
+    <Compile Include="Sections\Chunk.cs" />
+    <Compile Include="Sections\ChunkHeader.cs" />
+    <Compile Include="Sections\ChunkLoader.cs" />
+    <Compile Include="Sections\CibSection.cs" />
+    <Compile Include="Sections\ContainerChunk.cs" />
+    <Compile Include="Sections\DummySection.cs" />
+    <Compile Include="Sections\Model\BoundingBoxChunk.cs" />
+    <Compile Include="Sections\Model\BoundingBoxContainerChunk.cs" />
+    <Compile Include="Sections\Model\ChunkType.cs" />
+    <Compile Include="Sections\Model\CompChunk.cs" />
+    <Compile Include="Sections\Model\EnvdChunk.cs" />
+    <Compile Include="Sections\Model\EquipParamSection.cs" />
+    <Compile Include="Sections\Model\HeaderChunk.cs" />
+    <Compile Include="Sections\Model\LtcdChunk.cs" />
+    <Compile Include="Sections\Model\MeshChunk.cs" />
+    <Compile Include="Sections\Model\MeshHeaderChunk.cs" />
+    <Compile Include="Sections\Model\MictChunk.cs" />
+    <Compile Include="Sections\Model\MinsChunk.cs" />
+    <Compile Include="Sections\Model\ModelChunk.cs" />
+    <Compile Include="Sections\Model\ModelContainerChunk.cs" />
+    <Compile Include="Sections\Model\ModelSection.cs" />
+    <Compile Include="Sections\Model\NameChunk.cs" />
+    <Compile Include="Sections\Model\PgrpChunk.cs" />
+    <Compile Include="Sections\Model\PridChunk.cs" />
+    <Compile Include="Sections\Model\PrtpChunk.cs" />
+    <Compile Include="Sections\Model\RsidChunk.cs" />
+    <Compile Include="Sections\Model\RstpChunk.cs" />
+    <Compile Include="Sections\Model\ShapChunk.cs" />
+    <Compile Include="Sections\Model\StreamChunk.cs" />
+    <Compile Include="Sections\Model\StreamCompressionType.cs" />
+    <Compile Include="Sections\Model\StreamDataType.cs" />
+    <Compile Include="Sections\Model\StreamDecompressors.cs" />
+    <Compile Include="Sections\Model\StreamElement.cs" />
+    <Compile Include="Sections\Model\StringChunk.cs" />
+    <Compile Include="Sections\Model\WrbChunk.cs" />
+    <Compile Include="Sections\PhbSection.cs" />
+    <Compile Include="Sections\PwibSection.cs" />
+    <Compile Include="Sections\Resource\ResourceData.cs" />
+    <Compile Include="Sections\Resource\ResourceHeader.cs" />
+    <Compile Include="Sections\Resource\ResourceSection.cs" />
+    <Compile Include="Sections\Animation\ScbSection.cs" />
+    <Compile Include="Sections\Script\LuaFile.cs" />
+    <Compile Include="Sections\Script\NameDecoder.cs" />
+    <Compile Include="Sections\SectionBase.cs" />
+    <Compile Include="Sections\SectionHeader.cs" />
+    <Compile Include="Sections\SectionLoader.cs" />
+    <Compile Include="Sections\SectionMagicNumbers.cs" />
+    <Compile Include="Sections\SectionType.cs" />
+    <Compile Include="Sections\Shader\ChunkType.cs" />
+    <Compile Include="Sections\Shader\FileChunk.cs" />
+    <Compile Include="Sections\Shader\ParameterData.cs" />
+    <Compile Include="Sections\Shader\PcapChunk.cs" />
+    <Compile Include="Sections\Shader\PramChunk.cs" />
+    <Compile Include="Sections\Shader\SamplerData.cs" />
+    <Compile Include="Sections\Shader\ShaderChunk.cs" />
+    <Compile Include="Sections\Shader\ShaderSection.cs" />
+    <Compile Include="Sections\Shader\VcapChunk.cs" />
+    <Compile Include="Sections\Skeleton\ElbSection.cs" />
+    <Compile Include="Sections\Skeleton\Header.cs" />
+    <Compile Include="Sections\Skeleton\SkeletonBone.cs" />
+    <Compile Include="Sections\Skeleton\SkeletonSection.cs" />
+    <Compile Include="Sections\Sound\AdpcmWave.cs" />
+    <Compile Include="Sections\Sound\IWave.cs" />
+    <Compile Include="Sections\Sound\PcmWave.cs" />
+    <Compile Include="Sections\Sound\SscfHeader.cs" />
+    <Compile Include="Sections\Sound\SscfSection.cs" />
+    <Compile Include="Sections\Sound\VorbisWave.cs" />
+    <Compile Include="Sections\Sound\WaveFormat.cs" />
+    <Compile Include="Sections\Sound\WaveHeader.cs" />
+    <Compile Include="Sections\Texture\GtexData.cs" />
+    <Compile Include="Sections\Texture\GtexHeader.cs" />
+    <Compile Include="Sections\Texture\TextureHeader.cs" />
+    <Compile Include="Sections\Texture\TextureSection.cs" />
+    <Compile Include="Sections\Texture\VtexSection.cs" />
+    <Compile Include="Sections\UI\SparkleFile.cs" />
+    <Compile Include="Sections\UI\SqexFile.cs" />
+    <Compile Include="Crypto\ShuffleString.cs" />
+    <Compile Include="Sound\AdpcmWaveFormat.cs" />
+    <Compile Include="Sound\IPlayable.cs" />
+    <Compile Include="Utilities.cs" />
+    <Compile Include="Xml\FileBlock.cs" />
+    <Compile Include="Xml\Format\FormatManager.cs" />
+    <Compile Include="Xml\Format\IconFormatter.cs" />
+    <Compile Include="Xml\Format\IdentityFormatter.cs" />
+    <Compile Include="Xml\Format\IFormatCell.cs" />
+    <Compile Include="Xml\Format\ModelFormatter.cs" />
+    <Compile Include="Xml\KnownColumnData.cs" />
+    <Compile Include="Xml\Parameter.cs" />
+    <Compile Include="Xml\Sheet.cs" />
+    <Compile Include="Xml\SheetMode.cs" />
+    <Compile Include="Xml\SheetType.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

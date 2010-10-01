@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B090CCCC-21EE-4163-B49D-6124961B0683}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ModelViewer</RootNamespace>
+    <AssemblyName>ModelViewer</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ifrit.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="csogg">
+      <HintPath>..\..\lib\csogg.dll</HintPath>
+    </Reference>
+    <Reference Include="csvorbis">
+      <HintPath>..\..\lib\csvorbis.dll</HintPath>
+    </Reference>
+    <Reference Include="SlimDX, Version=2.0.10.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=x86" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CacheProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CacheProgress.designer.cs">
+      <DependentUpon>CacheProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cache\ActorCache.cs" />
+    <Compile Include="Cache\CacheManager.cs" />
+    <Compile Include="Cache\DeleteCacheOnUninstallAction.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Cache\DeleteCacheOnUninstallAction.Designer.cs">
+      <DependentUpon>DeleteCacheOnUninstallAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cache\EquipParamCache.cs" />
+    <Compile Include="Cache\TexturePathCache.cs" />
+    <Compile Include="Cache\VarEquipCache.cs" />
+    <Compile Include="Cartographer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cartographer.designer.cs">
+      <DependentUpon>Cartographer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CharaHelper.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PreferencesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PreferencesForm.designer.cs">
+      <DependentUpon>PreferencesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderer\AnimatedSkeleton.cs" />
+    <Compile Include="Renderer\ArcBall.cs" />
+    <Compile Include="Renderer\Bone.cs" />
+    <Compile Include="Renderer\ColorHelper.cs" />
+    <Compile Include="Renderer\GlobalRenderSettings.cs" />
+    <Compile Include="Renderer\IRenderable.cs" />
+    <Compile Include="Renderer\ISkeleton.cs" />
+    <Compile Include="Renderer\Mesh.cs" />
+    <Compile Include="Renderer\Model.cs" />
+    <Compile Include="Renderer\PreviewActor.cs" />
+    <Compile Include="Renderer\PreviewAnimatedChara.cs" />
+    <Compile Include="Renderer\PreviewAnimatedSkeleton.cs" />
+    <Compile Include="Renderer\PreviewChara.cs" />
+    <Compile Include="Renderer\PreviewModel.cs" />
+    <Compile Include="Renderer\PreviewSkeleton.cs" />
+    <Compile Include="Renderer\PreviewTexture.cs" />
+    <Compile Include="Renderer\Renderable.cs" />
+    <Compile Include="Renderer\RenderableContainer.cs" />
+    <Compile Include="Renderer\Rendering\DeviceContext9.cs" />
+    <Compile Include="Renderer\Rendering\DeviceSettings9.cs" />
+    <Compile Include="Renderer\Rendering\DynamicPrimitiveBuffer.cs" />
+    <Compile Include="Renderer\Rendering\DynamicPrimitiveBuffer9.cs" />
+    <Compile Include="Renderer\Rendering\PrimitiveTopology.cs" />
+    <Compile Include="Renderer\Rendering\Primitive\ColoredVertex.cs" />
+    <Compile Include="Renderer\Rendering\Primitive\TexturedVertex.cs" />
+    <Compile Include="Renderer\Rendering\Primitive\TransformedColoredVertex.cs" />
+    <Compile Include="Renderer\Rendering\UI\DefaultVisual.cs" />
+    <Compile Include="Renderer\Rendering\UI\IElementVisual.cs" />
+    <Compile Include="Renderer\Rendering\UI\Text.cs" />
+    <Compile Include="Renderer\Rendering\UI\UserInterfaceRenderer.cs" />
+    <Compile Include="Renderer\Rendering\UI\UserInterfaceRenderer9.cs" />
+    <Compile Include="Renderer\Sample.cs" />
+    <Compile Include="Renderer\SampleConfiguration.cs" />
+    <Compile Include="Renderer\ShaderManager.cs" />
+    <Compile Include="Renderer\SkeletalFrame.cs" />
+    <Compile Include="Renderer\SkeletonExtension.cs" />
+    <Compile Include="Renderer\SubModel.cs" />
+    <Compile Include="Renderer\TexturedQuad.cs" />
+    <Compile Include="Renderer\TextureManager.cs" />
+    <Compile Include="Renderer\UI\Binding\Bindable.cs" />
+    <Compile Include="Renderer\UI\Binding\Binding.cs" />
+    <Compile Include="Renderer\UI\Binding\IBindable.cs" />
+    <Compile Include="Renderer\UI\Element.cs" />
+    <Compile Include="Renderer\UI\ElementContainer.cs" />
+    <Compile Include="Renderer\UI\UserInterface.cs" />
+    <Compile Include="Renderer\Utility\Clock.cs" />
+    <Compile Include="Renderer\VisualSkeleton.cs" />
+    <Compile Include="ShaderViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShaderViewer.designer.cs">
+      <DependentUpon>ShaderViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sound\SoundManager.cs" />
+    <Compile Include="TextBoxTraceListener.cs" />
+    <EmbeddedResource Include="CacheProgress.resx">
+      <DependentUpon>CacheProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cartographer.resx">
+      <DependentUpon>Cartographer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreferencesForm.resx">
+      <DependentUpon>PreferencesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ShaderViewer.resx">
+      <DependentUpon>ShaderViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="pshader.psh" />
+    <EmbeddedResource Include="vshader.vsh" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DatDigger\DatDigger.csproj">
+      <Project>{3539EA26-9207-4AA0-B46E-900F2DF6F2B8}</Project>
+      <Name>DatDigger</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Cache\create_cache.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\landscape_negative_x.png" />
+    <EmbeddedResource Include="Resources\landscape_negative_y.png" />
+    <EmbeddedResource Include="Resources\landscape_negative_z.png" />
+    <EmbeddedResource Include="Resources\landscape_positive_x.png" />
+    <EmbeddedResource Include="Resources\landscape_positive_y.png" />
+    <EmbeddedResource Include="Resources\landscape_positive_z.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ifrit.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
